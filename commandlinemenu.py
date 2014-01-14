@@ -51,12 +51,12 @@ def show(collection):
 def switch(opt, *fun_ptrs, **fun_args):
     """ Use by cli.switch( return val, args as ptrs to functions without() ) """
     try:
-        args = fun_args.values()[0][0][int(opt)],
+        args = fun_args.values()[0][0][int(opt)]
     except: 
-        args = None,
+        args = None
     try:
         #print "opt:%s fun_ptrs:%s fun_args:%s" % (opt, fun_ptrs, fun_args)
-        fun_ptrs[int(opt)](*args)
+        fun_ptrs[int(opt)](args) if args else fun_ptrs[int(opt)]() 
     except ValueError: #probably mistakenly pressed enter
         print "Wrong input (only digits are valid)" 
         return
